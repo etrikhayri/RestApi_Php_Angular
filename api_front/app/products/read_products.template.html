@@ -1,0 +1,53 @@
+<div layout="row" ng-controller="productsController" ng-cloak>
+    <div flex="10"></div>
+ 
+    <div flex="80" class='m-20px-0'>
+ 
+        
+        <md-toolbar class="md-hue-2">
+            <div class="md-toolbar-tools">
+               
+                <div flex md-truncate>
+                    <h3 class="md-headline">Produits</h3>
+                </div>
+ 
+               <!-- bouton créer nouveau produit -->
+               <md-button class="md-raised" ng-click="showCreateProductForm()">Créer</md-button>
+
+            </div>
+        </md-toolbar>
+ 
+        <!-- champ rechercher un produit -->
+<md-input-container class="md-block m-b-0px">
+    <form ng-submit="searchProducts()">
+        <label>Trouver produit...</label>
+        <input ng-model="product_search_keywords">
+    </form>
+</md-input-container>
+ 
+        <md-content flex>
+            <!-- Afficher liste de produits trouvés -->
+            <md-list ng-init="readProducts()">
+                <md-list-item class="md-3-line" ng-repeat="product in products">
+ 
+                    <!-- informations de produit -->
+                    <div class="md-list-item-text">
+                        <h3>{{product.name}}</h3>
+                        <h4>{{product.description}}</h4>
+                        <p>{{product.price}}$</p>
+                    </div>
+ 
+                    <!-- Boutons consulter,modifier,supprimer -->
+                    <div class="md-secondary-container">
+                        <md-button class="md-raised md-info" ng-click="readOneProduct(product.id)">Consulter</md-button>
+                        <md-button class="md-raised md-primary" ng-click="showUpdateProductForm(product.id)">Modifier</md-button>
+                        <md-button class="md-raised md-danger" ng-click="confirmDeleteProduct($event, product.id)">Supprimer</md-button>
+                    </div>
+                    <md-divider ng-if="!$last"></md-divider>
+                </md-list-item>
+            </md-list>
+        </md-content>
+    </div>
+ 
+    <div flex="10"></div>
+</div> 
