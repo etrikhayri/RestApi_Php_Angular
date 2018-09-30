@@ -1,0 +1,42 @@
+Database Name: api_db 
+
+executer les réqutes suivantes:
+1 
+CREATE TABLE IF NOT EXISTS `categories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(256) NOT NULL,
+  `description` text NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
+
+2
+INSERT INTO `categories` (`id`, `name`, `description`, `created`, `modified`) VALUES
+(1, 'Pc', 'Categorie de pc protable', '2018-06-01 00:35:07', '2018-05-30 17:34:33'),
+(2, 'Tablette', 'Categorie de tout types de tablettes.', '2018-06-01 00:35:07', '2018-05-30 17:34:33'),
+(3, 'Casque', 'Categorie de tout types de casques', '2018-06-01 00:35:07', '2018-05-30 17:34:54'),
+
+
+3
+CREATE TABLE IF NOT EXISTS `products` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(32) NOT NULL,
+  `description` text NOT NULL,
+  `price` decimal(10,0) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+
+4
+INSERT INTO `products` (`id`, `name`, `description`, `price`, `category_id`, `created`, `modified`) VALUES
+(1, 'LG P880 ', 'Pc gamer!', '336', 3, '2018-06-01 01:12:26', '2018-05-31 17:12:26'),
+(2, 'Casque alterno 445', 'Superbe casque ericsson!', '299', 2, '2018-06-01 01:12:26', '2018-05-31 17:12:26'),
+(3, 'Samsung Galaxy Tab', 'la nouvelle tablette de samsung?', '600', 3, '2018-06-01 01:12:26', '2018-05-31 17:12:26'),
+(4, 'Toshiba satellite', 'pc haute gamme de toshiba!', '29', 1, '2018-06-01 01:12:26', '2018-05-31 02:12:21'),
+(5, 'Lenovo air', 'Pc pour les professionnels.', '399', 2, '2018-06-01 01:13:45', '2018-05-31 02:13:39'),
+
+
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=65 ;
+
